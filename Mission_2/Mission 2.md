@@ -1,7 +1,7 @@
 # Module 5:  **Web Architecture & Node.js Fundamentals**
 
 ### **1. Client-Server Architecture**
-![Client-Server Architecture](../media/Mission 2-1778357633931.png)
+![Client-Server Architecture](../media/Mission%202-1778357633931.png)
 
 The web works mainly through communication between two sides: the client and the server.
 
@@ -127,7 +127,7 @@ Modern web applications are basically structured systems of client–server comm
 ---
 
 ### **2. Domain Name & DNS (Domain Name Server)**
-![DNS](../media/Mission 2-1778357738536.png)
+![DNS](../media/Mission%202-1778357738536.png)
 
 The internet does not actually understand names like `google.com` or `example.com`. Those are just human-friendly labels.
 
@@ -231,7 +231,7 @@ DNS is what makes the internet usable at scale.
 ### **3. HTTP Requests & Rendering**
 
 
-![HTTP Requests & Rendering](../media/Mission 2-1778358051588.png)
+![HTTP Requests & Rendering](../media/Mission%202-1778358051588.png)
 
 - Connection: From IP to Server Communication
     
@@ -466,9 +466,9 @@ This is what enables non-blocking I/O and event-driven architecture.
     
 
 ### **Event Loop & Thread Pool**
-![Event Loop](../media/Mission 2-1778358568803.png)
+![Event Loop](../media/Mission%202-1778358568803.png)
 
-![Thread Pool](../media/Mission 2-1778358479582.png)
+![Thread Pool](../media/Mission%202-1778358479582.png)
 
 **Event Loop**
 
@@ -561,7 +561,7 @@ Modern solutions include:
 
 So the system scales by moving CPU-heavy work away from the event loop instead of forcing it to handle everything.
 
-![Node.js System Architecture](../media/Mission 2-1778358227666.png)
+![Node.js System Architecture](../media/Mission%202-1778358227666.png)
 
 ---
 
@@ -768,7 +768,7 @@ Together, these define how JavaScript code is organized, shared, and executed in
 
 ---
 
-![Node.js System Architecture](../media/Mission 2-1778358227666.png)
+![Node.js System Architecture](../media/Mission%202-1778358227666.png)
 
 In Node.js, the system is designed to handle multiple operations simultaneously without waiting for one to finish before starting the next. This is particularly evident in how it manages concurrent user requests.
 
@@ -1532,7 +1532,7 @@ const server: Server = createServer((req: IncomingMessage, res) => {
 server is running on port: 5000
 ```
 
-![Server Response](../media/Mission 2-1778442194754.png)
+![Server Response](../media/Mission%202-1778442194754.png)
 
 ## Now, what if we want to send the response as a JSON
 
