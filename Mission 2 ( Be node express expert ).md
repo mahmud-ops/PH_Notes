@@ -1,8 +1,7 @@
-# Module 5: **Web Architecture & Node.js Fundamentals**
+# Module 5:  **Web Architecture & Node.js Fundamentals**
 
 ### **1. Client-Server Architecture**
-
-![Client-Server Architecture](../media/Mission%202-1778357633931.png)
+![[Mission 2-1778357633931.webp|613]]
 
 The web works mainly through communication between two sides: the client and the server.
 
@@ -11,16 +10,22 @@ The **client** is the application used by the user, usually a web browser. Its j
 The **server** is a remote computer that stores resources and handles logic. It receives requests from clients, processes them, and returns responses. A response may contain:
 
 - an HTML page
+    
 - JSON data
+    
 - images or videos
+    
 - authentication results
+    
 - error messages
+    
 
 In short:
 
 > Client asks → Server processes → Server responds → Client displays
 
 - Understanding a URL
+    
 
 **Example:**
 
@@ -31,38 +36,56 @@ A URL (Uniform Resource Locator) is the address used to locate resources on the 
 It is divided into multiple parts:
 
 - `https`
-  This is the **protocol**.  
-   It defines the communication rules between the client and server.
-  `HTTP` transfers data normally.  
-   `HTTPS` transfers data securely using encryption.
+    
+    This is the **protocol**.  
+    It defines the communication rules between the client and server.
+    
+    `HTTP` transfers data normally.  
+    `HTTPS` transfers data securely using encryption.
+    
 - `example.com`
-  This is the **domain name**.  
-   Humans use domain names because they are easier to remember than IP addresses.
-  Behind the scenes, the browser converts the domain into an IP address through DNS.
+    
+    This is the **domain name**.  
+    Humans use domain names because they are easier to remember than IP addresses.
+    
+    Behind the scenes, the browser converts the domain into an IP address through DNS.
+    
 - `/path`
-
-  This is the **resource path**.  
-   It tells the server which specific resource the client wants.
-
-  Examples:
-  - `/about`
-  - `/products`
-  - `/api/users`
+    
+    This is the **resource path**.  
+    It tells the server which specific resource the client wants.
+    
+    Examples:
+    
+    - `/about`
+        
+    - `/products`
+        
+    - `/api/users`
+        
 
 - What Actually Happens When You Visit a Website
+    
 
 When a user enters a URL or clicks a link, several things happen internally:
 
 1. The browser reads the URL.
+    
 2. DNS translates the domain name into an IP address.
+    
 3. The browser sends an HTTP/HTTPS request to the server.
+    
 4. The server receives and processes the request.
+    
 5. The server returns a response.
+    
 6. The browser renders the response for the user.
+    
 
 This entire process usually happens within milliseconds.
 
 - Rules of Communication
+    
 
 Clients and servers cannot communicate randomly. They follow predefined standards called **protocols**.
 
@@ -71,30 +94,40 @@ The most important web protocol is HTTP/HTTPS.
 These protocols define:
 
 - how requests are structured
+    
 - how responses are returned
+    
 - how status codes work
+    
 - how data is transferred
+    
 - how security is handled
+    
 
 Without these rules, browsers and servers would not understand each other.
 
 - Key Idea
+    
 
 A website is not “opened directly.”
 
 The browser is constantly:
 
 - sending requests
+    
 - receiving responses
+    
 - rendering data
+    
 
 Modern web applications are basically structured systems of client–server communication.
+    
+
 
 ---
 
 ### **2. Domain Name & DNS (Domain Name Server)**
-
-![DNS](../media/Mission%202-1778357738536.png)
+![[Mission 2-1778357738536.webp|641]]
 
 The internet does not actually understand names like `google.com` or `example.com`. Those are just human-friendly labels.
 
@@ -105,20 +138,26 @@ An **IP address** (like `139.59.132.134`) is the real location of a server on th
 So instead of remembering numbers, we use a **domain name system**.
 
 - Domain Name vs IP Address
+    
 
 A **domain name** is just a readable alias for an IP address.
 
 - Domain Name → `example.com`
+    
 - Real Address → `139.59.132.134`
+    
 
 They are equivalent, but used in different contexts:
 
 - humans use domain names
+    
 - machines use IP addresses
+    
 
 The domain itself does not store data. It simply points to where the data lives.
 
 - DNS (Domain Name System)
+    
 
 DNS is basically the internet’s “phonebook”.
 
@@ -138,39 +177,52 @@ User request (domain name)
 Often the result also includes a **port**, which specifies the service:
 
 - `:443` → HTTPS (secure web traffic)
+    
 - `:80` → HTTP (normal web traffic)
+    
 
 So the real connection target becomes something like:  
 `139.59.132.134:443`
 
 - What happens when you click a domain
+    
 
 When you click a link or enter a domain:
 
 The browser first checks:
 
 - “What IP is this domain mapped to?”
+    
 
 If unknown:
 
 - it queries DNS servers
+    
 - gets back the IP address
+    
 
 Then:
 
 - it connects directly to that IP
+    
 - requests the resource from the server
+    
 - server responds
+    
 
 - Key idea
+    
 
 Domain names are just a convenience layer.
 
 They hide:
 
 - raw IP addresses
+    
 - network complexity
+    
 - server location details
+    
 
 DNS is what makes the internet usable at scale.
 
@@ -178,78 +230,116 @@ DNS is what makes the internet usable at scale.
 
 ### **3. HTTP Requests & Rendering**
 
-![HTTP Requests & Rendering](../media/Mission%202-1778358051588.png)
+
+![[Mission 2-1778358051588.webp|680]]
 
 - Connection: From IP to Server Communication
+    
 
 After DNS resolves a domain into an IP address, the browser establishes a real network connection with the server.
 
 This connection is typically made using **TCP/IP**, which is a reliable communication protocol over the internet.
 
 - **IP** identifies where the server is
+    
 - **TCP** ensures data is delivered correctly and in order
+    
 
 Once the connection is established, the client and server can exchange structured messages called **requests and responses**.
 
 - HTTP Request Structure
+    
 
 A request is the message sent from the client to the server. It is not just “a call”, but a structured object with three main parts:
 
 1. **Method**
-
-   This defines what action the client wants to perform.
-   - `GET` → fetch data
-   - `POST` → send new data
-   - `PUT` → replace existing data
-   - `PATCH` → partially update data
-   - `DELETE` → remove data
-
-   The method defines intent, not implementation.
-
+    
+    This defines what action the client wants to perform.
+    
+    - `GET` → fetch data
+        
+    - `POST` → send new data
+        
+    - `PUT` → replace existing data
+        
+    - `PATCH` → partially update data
+        
+    - `DELETE` → remove data
+        
+    
+    The method defines intent, not implementation.
+    
 2. **Headers**
-
-   Metadata about the request.
-
-   Examples:
-   - `Host`: target domain
-   - `Content-Type`: type of data (e.g. JSON)
-   - `Authorization`: login token or credentials
-   - `Accept-Encoding`: supported compression formats
-
-   Headers help the server understand how to interpret the request.
-
+    
+    Metadata about the request.
+    
+    Examples:
+    
+    - `Host`: target domain
+        
+    - `Content-Type`: type of data (e.g. JSON)
+        
+    - `Authorization`: login token or credentials
+        
+    - `Accept-Encoding`: supported compression formats
+        
+    
+    Headers help the server understand how to interpret the request.
+    
 3. **Body**
-
-   The actual data sent to the server (only used in methods like POST, PUT, PATCH).
-
-   Most modern applications use **JSON** because it is lightweight and language-independent.
+    
+    The actual data sent to the server (only used in methods like POST, PUT, PATCH).
+    
+    Most modern applications use **JSON** because it is lightweight and language-independent.
+    
 
 - HTTP Response Structure
+    
 
 After processing the request, the server sends back a response containing:
 
 - **Status Code**
-  Indicates the result of the request:
-  - `200` → success
-  - `201` → created
-  - `400` → bad request
-  - `401` → unauthorized
-  - `404` → not found
-  - `500` → server error
+    
+    Indicates the result of the request:
+    
+    - `200` → success
+        
+    - `201` → created
+        
+    - `400` → bad request
+        
+    - `401` → unauthorized
+        
+    - `404` → not found
+        
+    - `500` → server error
+        
 - **Headers**
-  Metadata about the response:
-  - content type
-  - caching rules
-  - cookies
-  - security policies
+    
+    Metadata about the response:
+    
+    - content type
+        
+    - caching rules
+        
+    - cookies
+        
+    - security policies
+        
 - **Body**
-  The actual returned data:
-  - HTML page
-  - JSON object
-  - file data
-  - error message
+    
+    The actual returned data:
+    
+    - HTML page
+        
+    - JSON object
+        
+    - file data
+        
+    - error message
+        
 
-#### Rendering Strategies
+####  Rendering Strategies
 
 Once data reaches the client, the UI can be built in two main ways.
 
@@ -260,13 +350,17 @@ In SSR, the server builds the full HTML before sending it to the browser.
 Process:
 
 - request goes to server
+    
 - server fetches data from database
+    
 - server combines data with a template engine (like EJS, Pug, or Handlebars)
+    
 - server generates complete HTML
+    
 - browser receives ready-to-display page
+    
 
-So the flow is:
-
+So the flow is:  
 > DB + Request + Template → Full HTML → Browser
 
 This reduces client-side work but increases server load.
@@ -278,8 +372,11 @@ In CSR, the server does not send full HTML pages. Instead, it sends raw data (us
 Process:
 
 - browser sends request to API
+    
 - server returns JSON from database
+    
 - frontend framework (React, etc.) builds the UI in the browser
+    
 
 So the flow is:  
 API → JSON → UI rendered in browser
@@ -287,17 +384,22 @@ API → JSON → UI rendered in browser
 Advantages:
 
 - reusable backend (same API for web, mobile, desktop)
+    
 - faster interactions after initial load
+    
 - scalable architecture
+    
 
 This is why modern systems prefer API-first design.
 
 - Key Idea
+    
 
 SSR = server builds UI  
 CSR = browser builds UI using data
 
 Both rely on the same core system: HTTP request/response over TCP/IP.
+        
 
 ---
 
@@ -310,8 +412,11 @@ TCP/IP does not send data as one continuous stream. Instead, it splits data into
 TCP ensures reliability in this process:
 
 - packets are delivered in order
+    
 - missing packets are resent
+    
 - data integrity is maintained
+    
 
 IP handles routing of these packets across different networks until they reach the correct destination.
 
@@ -337,9 +442,13 @@ LibUV is a C++ library that powers asynchronous operations in environments like 
 It handles tasks that should not block the main execution thread, such as:
 
 - file system operations
+    
 - network requests
+    
 - OS-level interactions
+    
 - timers and event handling
+    
 
 Instead of waiting for these tasks to finish, LibUV delegates them to the operating system and continues executing other code. When the task completes, it triggers a callback.
 
@@ -350,14 +459,16 @@ This is what enables non-blocking I/O and event-driven architecture.
 **Core Idea**
 
 - TCP/IP manages _how data travels across networks_
+    
 - V8 manages _how JavaScript runs as machine code_
+    
 - LibUV manages _how asynchronous operations are handled efficiently_
+    
 
 ### **Event Loop & Thread Pool**
+![[Mission 2-1778358568803.webp|587]]
 
-![Event Loop](../media/Mission%202-1778358568803.png)
-
-![Thread Pool](../media/Mission%202-1778358479582.png)
+![[Mission 2-1778358479582.webp|592]]
 
 **Event Loop**
 
@@ -366,8 +477,11 @@ The event loop is the core of Node.js execution. It continuously checks for comp
 Its main job is not to perform heavy work, but to:
 
 - schedule callbacks
+    
 - manage non-blocking I/O
+    
 - coordinate execution flow
+    
 
 When an async task completes (like a network request), the event loop picks up its callback and executes it in the main thread.
 
@@ -380,9 +494,13 @@ Some tasks cannot be handled efficiently on the main thread because they are CPU
 It handles operations like:
 
 - file system reading/writing
+    
 - data compression
+    
 - cryptographic operations
+    
 - DNS lookups (in some cases)
+    
 
 These tasks run in parallel in the background. Once completed, results are pushed back to the event loop.
 
@@ -401,9 +519,13 @@ Event occurs → EventEmitter emits event → Listener detects event → Callbac
 This pattern is widely used in:
 
 - HTTP servers
+    
 - file systems
+    
 - streams
+    
 - user-defined event systems
+    
 
 Instead of blocking execution, Node reacts only when something happens.
 
@@ -414,8 +536,11 @@ Instead of blocking execution, Node reacts only when something happens.
 Node.js is single-threaded at the JavaScript level, but not single-threaded in execution overall.
 
 - JS execution → single main thread
+    
 - Background work → thread pool
+    
 - Coordination → event loop
+    
 
 This hybrid model is what enables high scalability with low resource usage.
 
@@ -428,12 +553,15 @@ The default model is not suitable for heavy computation because it can block the
 Modern solutions include:
 
 - Worker Threads (true parallel execution inside Node.js)
+    
 - Microservices (offloading heavy work to separate processes)
+    
 - External job queues (Redis-based systems, etc.)
+    
 
 So the system scales by moving CPU-heavy work away from the event loop instead of forcing it to handle everything.
 
-![Node.js System Architecture](../media/Mission%202-1778358227666.png)
+![[Mission 2-1778358227666.webp]]
 
 ---
 
@@ -460,9 +588,13 @@ This makes data processing continuous and efficient.
 Streams are commonly used in:
 
 - reading large files
+    
 - video/audio playback
+    
 - HTTP requests/responses
+    
 - real-time data transfer
+    
 
 ---
 
@@ -475,7 +607,9 @@ When data arrives in chunks, it is not always immediately usable. The buffer act
 In simple terms:
 
 - Stream = flow of data
+    
 - Buffer = waiting area for data chunks
+    
 
 ---
 
@@ -484,7 +618,9 @@ In simple terms:
 Streams improve performance in two main ways:
 
 - **Lower memory usage**: only small chunks are stored at a time
+    
 - **Better responsiveness**: processing starts immediately instead of waiting for full data
+    
 
 This is critical in large-scale systems like video platforms or file servers.
 
@@ -495,13 +631,17 @@ This is critical in large-scale systems like video platforms or file servers.
 Node.js provides four main stream types:
 
 1. **Readable Stream**  
-   Used when data is being read from a source (e.g., file reading, HTTP request body).
+    Used when data is being read from a source (e.g., file reading, HTTP request body).
+    
 2. **Writable Stream**  
-   Used when data is being written somewhere (e.g., saving a file, sending a response).
+    Used when data is being written somewhere (e.g., saving a file, sending a response).
+    
 3. **Duplex Stream**  
-   Can both read and write data (e.g., TCP sockets).
+    Can both read and write data (e.g., TCP sockets).
+    
 4. **Transform Stream**  
-   A special duplex stream that modifies data while it is passing through (e.g., compression, encryption).
+    A special duplex stream that modifies data while it is passing through (e.g., compression, encryption).
+    
 
 ---
 
@@ -510,6 +650,7 @@ Node.js provides four main stream types:
 Streams allow Node.js to process data continuously instead of waiting for full load, while buffers temporarily hold chunks during that process.
 
 This combination is what makes Node.js efficient for handling large-scale I/O operations.
+    
 
 ---
 
@@ -530,8 +671,11 @@ More commonly:
 What happens here:
 
 - A function is defined
+    
 - It is executed instantly
+    
 - Its variables are not accessible outside
+    
 
 This pattern was heavily used before modern module systems existed.
 
@@ -546,12 +690,16 @@ Node.js supports two main module systems, which define how code is organized and
 This is the original module system used in Node.js.
 
 - Uses `require()` to import modules
+    
 - Uses `module.exports` to export functionality
+    
 
 Example behavior:
 
 - Synchronous loading
+    
 - Works directly in Node.js without configuration
+    
 
 It is still widely used in existing codebases.
 
@@ -562,8 +710,11 @@ It is still widely used in existing codebases.
 ES Modules are the modern JavaScript standard.
 
 - Uses `import` and `export`
+    
 - Supports static analysis (better optimization)
+    
 - Works in both browsers and Node.js (Node ≥ v14 with configuration)
+    
 
 This system is more structured and future-oriented compared to CommonJS.
 
@@ -582,10 +733,15 @@ Pre-installed modules provided by Node.js runtime. No installation required.
 Common examples:
 
 - `fs` → file system operations
+    
 - `http` → server creation
+    
 - `path` → file path handling
+    
 - `os` → system information
+    
 - `url` → URL parsing
+    
 
 **3. Third-Party Modules**  
 External packages installed via package managers like npm. These extend functionality beyond core Node.js capabilities.
@@ -597,39 +753,51 @@ Examples include frameworks, utilities, and libraries.
 **Key Idea**
 
 - IIFE creates isolation before modules existed
+    
 - CommonJS is Node’s traditional system
+    
 - ES Modules is the modern standard
+    
 - Node apps are structured using local, built-in, and third-party modules
+    
 
 Together, these define how JavaScript code is organized, shared, and executed in real applications.
+    
 
 ### Non - blocking I/O handling
 
----
-
-![Node.js System Architecture](../media/Mission%202-1778358227666.png)
+---![[Mission 2-1778358227666.webp]]
 
 In Node.js, the system is designed to handle multiple operations simultaneously without waiting for one to finish before starting the next. This is particularly evident in how it manages concurrent user requests.
 
 #### **Execution Scenario**
 
 - **User 1**: Attempting to fetch data from a database.
+    
 - **User 2**: Attempting to read a file from the system asynchronously.
+    
 - **User 3**: Attempting to fetch additional data.
+    
 
 #### **How Node.js Handles Multiple Requests**
 
 Node.js uses a single-threaded server model to manage these incoming tasks through a specific architecture:
 
 - **Single Threaded Server**: The main thread receives all I/O operations from clients.
+    
 - **The Thread Pool**: For tasks that are blocking or heavy (like file system access or database queries), the single thread offloads the work to the **Thread Pool**.
+    
 - **LibUV & Event Loop**: These components coordinate the "non-blocking" nature by registering callbacks and checking when the offloaded tasks are complete.
+    
 - **Database Interaction**: The Thread Pool communicates with the Database (DB) to retrieve data and sends the result back to the client once finished.
+    
 
 #### **Limitations & Solutions**
 
 - **The Problem**: While the Thread Pool handles I/O well, it cannot efficiently handle highly **CPU-intensive tasks** (like heavy mathematical calculations or image processing).
+    
 - **The Solution**: For these specific limitations, **Multithreading** (Worker Threads) is used. Modern Node.js versions (v14+) now have native support for handling these multi-processing needs.
+    
 
 ---
 
@@ -646,8 +814,11 @@ Now the browser knows where the server lives. It establishes a TCP connection wi
 Once the connection is stable, the browser creates an HTTP request:
 
 - Method: GET
+    
 - Path: /dashboard
+    
 - Headers: include authentication token (JWT/cookie), content type, etc.
+    
 
 This request is split into TCP packets and sent across the network.
 
@@ -656,7 +827,9 @@ On the server side, Node.js (running behind LibUV) receives these packets. LibUV
 The event loop decides how to handle it. Since this request needs authentication and database access, it triggers:
 
 - auth validation
+    
 - database query for user dashboard data
+    
 
 If file I/O or heavy operations are needed, they are pushed to the thread pool so the main thread does not block.
 
@@ -665,15 +838,20 @@ Once the data is retrieved, Node builds the response. If the payload is large (l
 The response is structured:
 
 - Status: 200 OK
+    
 - Headers: content-type, caching rules
+    
 - Body: HTML (SSR) or JSON (CSR API response)
+    
 
 The response travels back through TCP packets to the browser.
 
 Finally:
 
 - If SSR → browser directly renders HTML
+    
 - If CSR → frontend framework (React-like) builds UI using JSON
+    
 
 The user sees their dashboard loaded.
 
@@ -776,9 +954,13 @@ AE --> AF
 If you understand this graph properly, you basically understand:
 
 - how a real backend system executes
+    
 - where latency comes from
+    
 - where scaling issues happen
+    
 - where bottlenecks form
+    
 
 # Module 6: Node.js REST API development and server architecture
 
@@ -793,8 +975,11 @@ A computer can act as a server. When you run and serve your code from your own d
 Steps:
 
 - Open project folder in VS Code
+    
 - Open terminal
+    
 - Run command:
+    
 
 ```bash
 npm init
@@ -828,14 +1013,20 @@ This creates a `package.json` file.
 **main**
 
 - Entry point of the application
+    
 - Default file Node runs when the project starts
+    
 - Usually `index.js`
+    
 
 **scripts**
 
 - Shortcut commands for running tasks
+    
 - Example: testing, starting server, build scripts
+    
 - You can run them using:
+    
 
 ```bash
 npm run test
@@ -846,7 +1037,9 @@ npm run test
 **Key idea**
 
 - `package.json` is the configuration file of a Node.js project
+    
 - It stores metadata + scripts + dependencies
+    
 - Every Node project depends on it
 
 Understood. Keeping structure and numbering intact, only refining clarity.
@@ -862,8 +1055,11 @@ npm i -D typescript
 **-D (dev dependency)**
 
 - Used only during development/build time
+    
 - Not shipped to production
+    
 - TypeScript runs at compile time, so runtime doesn’t need it
+    
 
 **Initialize TypeScript config**
 
@@ -925,17 +1121,24 @@ npx tsc --init
 **What tsconfig is**
 
 - Core configuration file for TypeScript compiler
+    
 - Controls:
-  - How code is compiled
-  - Output structure
-  - Type checking strictness
-  - Module system behavior
+    
+    - How code is compiled
+        
+    - Output structure
+        
+    - Type checking strictness
+        
+    - Module system behavior
+        
 
 ---
 
 **4. Required tweaks**
 
 - Uncomment:
+    
 
 ```json
 "rootDir": "./src",
@@ -943,15 +1146,20 @@ npx tsc --init
 ```
 
 - Change:
+    
 
 ```json
 "module": "esnext"
 ```
 
 - Why:
-  - Cleaner modern ES module system
-  - Better compatibility with modern Node.js + tooling
-  - Avoids extra Node-specific module resolution complexity
+    
+    - Cleaner modern ES module system
+        
+    - Better compatibility with modern Node.js + tooling
+        
+    - Avoids extra Node-specific module resolution complexity
+        
 
 ---
 
@@ -960,8 +1168,11 @@ npx tsc --init
 ```
 
 - Why:
-  - Enables Node.js built-in type definitions
-  - Gives TypeScript awareness of `process`, `fs`, `path`, etc.
+    
+    - Enables Node.js built-in type definitions
+        
+    - Gives TypeScript awareness of `process`, `fs`, `path`, etc.
+        
 
 Install required package:
 
@@ -987,22 +1198,32 @@ learning-node/
 ```
 
 - `src/` → TypeScript source code
+    
 - `dist/` → compiled JavaScript output (generated later)
+    
 - `server.ts` → entry backend file
-- **6. Inside server.ts — Creating a basic Node.js server**
+- 
+**6. Inside server.ts — Creating a basic Node.js server**
 
 Node.js works on an event-driven architecture:
 
 - Event occurs
+    
 - EventEmitter emits event
+    
 - Listener detects event
+    
 - Callback executes
+    
 
 In HTTP servers:
 
 - Incoming request = event
+    
 - Server callback = event listener
+    
 - Response logic = callback execution
+    
 
 ---
 
@@ -1014,7 +1235,7 @@ import { createServer, IncomingMessage, Server, ServerResponse } from "http";
 const server: Server = createServer(
   (req: IncomingMessage, res: ServerResponse) => {
     console.log(req);
-  },
+  }
 );
 
 server.listen(5000, () => {
@@ -1027,25 +1248,40 @@ server.listen(5000, () => {
 **What is happening here**
 
 - `createServer(...)`
-  - Creates an HTTP server
-  - Internally registers a request event listener
+    
+    - Creates an HTTP server
+        
+    - Internally registers a request event listener
+        
 - `(req, res) => {}`
-  - This is the **event callback**
-  - Runs every time a request hits the server
+    
+    - This is the **event callback**
+        
+    - Runs every time a request hits the server
+        
 - `req: IncomingMessage`
-  - Contains request data (URL, method, headers, etc.)
+    
+    - Contains request data (URL, method, headers, etc.)
+        
 - `res: ServerResponse`
-  - Used to send response back to client
+    
+    - Used to send response back to client
+        
 
 ---
 
 **Event-driven flow in this code**
 
 - Browser sends request → event triggered
+    
 - Node HTTP server detects request event
+    
 - `createServer` callback runs
+    
 - `req` is processed
+    
 - `res` sends output back (currently not used yet)
+    
 
 ---
 
@@ -1058,15 +1294,20 @@ server.listen(5000, () => {
 ```
 
 - Starts listening on port `5000`
+    
 - Keeps process alive
+    
 - Logs confirmation when server is ready
+    
 
 ---
 
 **Key idea**
 
 - Node HTTP server is just a wrapper over event system
+    
 - Every request is an event
+    
 - Your callback is the listener reacting to that event
 
 **7. Running TypeScript server in development**
@@ -1082,9 +1323,13 @@ npm i tsx
 **What is `tsx`**
 
 - Runs TypeScript files directly in Node.js
+    
 - No need to manually compile (`tsc`)
+    
 - Supports watch mode (auto-reload on file changes)
+    
 - Common in modern Node.js dev workflows
+    
 
 ---
 
@@ -1102,10 +1347,15 @@ npm i tsx
 **What this script does**
 
 - `tsx watch`
-  - Watches file changes
-  - Automatically restarts server on update
+    
+    - Watches file changes
+        
+    - Automatically restarts server on update
+        
 - `./src/server.ts`
-  - Entry point of backend
+    
+    - Entry point of backend
+        
 
 ---
 
@@ -1120,8 +1370,11 @@ npm run dev
 **Result**
 
 - Server starts immediately
+    
 - Runs TypeScript without manual build step
+    
 - Auto-restarts on file changes
+    
 - Faster development loop compared to `tsc + node dist` workflow
 
 Understood. Same flow, same structure, only fixing English + completing gaps + improving clarity.
@@ -1167,17 +1420,23 @@ Let's check some stuff
 
 > [!As we saw before]  
 > A request is a message sent from the client to the server. It is not just a simple “call”, but a structured object with three main parts:
->
+> 
 > 1. **Method**
->
+>     
+> 
 > This defines what action the client wants to perform.
->
+> 
 > - `GET` → fetch data
+>     
 > - `POST` → send new data
+>     
 > - `PUT` → replace existing data
+>     
 > - `PATCH` → partially update data
+>     
 > - `DELETE` → remove data
->
+>     
+> 
 > The method defines intent, not implementation.
 
 ---
@@ -1186,10 +1445,10 @@ Let's look at the method in the big JSON we got
 
 ```json
 {
-  "url": "/",
-  "method": "GET", // it's a GET method
-  "statusCode": null,
-  "statusMessage": null
+  url: '/',
+  method: 'GET', // it's a GET method
+  statusCode: null,
+  statusMessage: null,
 }
 ```
 
@@ -1219,7 +1478,7 @@ const server: Server = createServer((req: IncomingMessage, res) => {
   const method = req.method;
   const url = req.url;
 
-  if (url == "/" && method == "GET") {
+  if (url == '/' && method == 'GET') {
     console.log("This is root route");
   }
 });
@@ -1239,11 +1498,11 @@ response.writeHead(statusCode[, statusMessage][, headers])
 ```
 
 ```ts
-const body = "hello world";
+const body = 'hello world';
 response
   .writeHead(200, {
-    "Content-Length": Buffer.byteLength(body),
-    "Content-Type": "text/plain",
+    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'text/plain',
   })
   .end(body);
 ```
@@ -1271,7 +1530,7 @@ const server: Server = createServer((req: IncomingMessage, res) => {
 server is running on port: 5000
 ```
 
-![Server Response](../media/Mission%202-1778442194754.png)
+![[Mission 2-1778442194754.webp]]
 
 ## Now, what if we want to send the response as a JSON
 
@@ -1310,7 +1569,9 @@ Because `res.end()` cannot directly send JavaScript objects.
 It only accepts:
 
 - string
+    
 - Buffer
+    
 
 So the object must be converted into a string first.
 
@@ -1366,8 +1627,11 @@ Checks if a string begins with a specific substring.
 So:
 
 - `/products`
+    
 - `/products/1`
+    
 - `/products?sort=asc`
+    
 
 All match this condition.
 
@@ -1380,7 +1644,9 @@ Because this check only cares about the URL path, not the action.
 Right now:
 
 - You are only matching routes structurally (`/`, `/products`)
+    
 - Not enforcing HTTP intent (`GET`, `POST`, etc.)
+    
 
 So `/products` works for any method (GET, POST, etc.) unless you explicitly restrict it.
 
@@ -1393,6 +1659,7 @@ if (url === "/products" && method === "GET")
 Otherwise:
 
 - URL-based routing = path matching only
+    
 - Method-based routing = action control (REST behavior)
 
 ## Better file organization
@@ -1401,24 +1668,35 @@ As we can see, our previous `server.ts` has too many responsibilities in a singl
 We'll face problems during debugging because:
 
 - routing logic
+    
 - response handling
+    
 - controller logic
+    
 - business logic
+    
 
 ... everything is mixed together.
 
 This becomes harder to:
 
 - debug
+    
 - scale
+    
 - maintain
+    
 - reuse
+    
 
 So, we have to distribute the tasks among separate files.
 
 - `route.ts` → handles route matching
+    
 - `controller.ts` → handles request/response logic
+    
 - `service.ts` → handles business logic and data processing
+    
 
 ```mermaid
 flowchart LR
@@ -1433,17 +1711,29 @@ C --response--> A
 **What each layer does**
 
 - `route.ts`
-  - decides which route should run
-  - acts like traffic control
+    
+    - decides which route should run
+        
+    - acts like traffic control
+        
 - `controller.ts`
-  - receives request from route
-  - processes request/response handling
-  - calls services if needed
+    
+    - receives request from route
+        
+    - processes request/response handling
+        
+    - calls services if needed
+        
 - `service.ts`
-  - contains core business logic
-  - database operations
-  - calculations
-  - reusable backend logic
+    
+    - contains core business logic
+        
+    - database operations
+        
+    - calculations
+        
+    - reusable backend logic
+        
 
 ---
 
@@ -1540,7 +1830,9 @@ server.listen(5000, () => {
 Now:
 
 - `server.ts` only creates the server
+    
 - `route.ts` handles route matching
+    
 
 Cleaner separation of responsibility.
 
@@ -1558,7 +1850,9 @@ Open `Controller/product.controller.ts`
 import type { ServerResponse } from "node:http";
 import products from "../database/db.json";
 
-export const productsController = (res: ServerResponse) => {
+export const productsController = (
+  res: ServerResponse
+) => {
   res
     .writeHead(200, {
       "content-type": "application/json",
@@ -1569,7 +1863,7 @@ export const productsController = (res: ServerResponse) => {
         data: {
           products,
         },
-      }),
+      })
     );
 };
 ```
@@ -1579,8 +1873,11 @@ export const productsController = (res: ServerResponse) => {
 Now the controller:
 
 - handles response logic
+    
 - sends formatted response
+    
 - manages product-related request handling
+    
 
 This keeps `route.ts` cleaner and focused only on route matching.
 
@@ -1591,31 +1888,31 @@ We defined a product database inside `database/db.json`
 ```js
 [
   {
-    id: 1,
-    name: "Earphone",
-    price: 250,
+    "id": 1,
+    "name": "Earphone",
+    "price": 250
   },
   {
-    id: 2,
-    name: "Wireless Mouse",
-    price: 150,
+    "id": 2,
+    "name": "Wireless Mouse",
+    "price": 150
   },
   {
-    id: 3,
-    name: "Keyboard",
-    price: 300,
+    "id": 3,
+    "name": "Keyboard",
+    "price": 300
   },
   {
-    id: 4,
-    name: "Webcam",
-    price: 400,
+    "id": 4,
+    "name": "Webcam",
+    "price": 400
   },
   {
-    id: 5,
-    name: "USB-C Hub",
-    price: 200,
-  },
-];
+    "id": 5,
+    "name": "USB-C Hub",
+    "price": 200
+  }
+]
 ```
 
 Now, we're gonna see how we can send this data to the client as a response via `products.controller.ts`
@@ -1629,6 +1926,7 @@ There's a global object in Node.js called `process`, and a method under it calle
 `cwd()` means:
 
 - current working directory
+    
 
 It returns the absolute path of the currently running project.
 
@@ -1675,14 +1973,14 @@ Doc: [https://nodejs.org/api/fs.html#fsreadfilesyncpath-options](https://nodejs.
 
 ```ts
 // from docs
-import { readFileSync } from "node:fs";
+import { readFileSync } from 'node:fs';
 
 // macOS, Linux, and Windows
-readFileSync("<directory>");
+readFileSync('<directory>');
 // => [Error: EISDIR: illegal operation on a directory, read <directory>]
 
 // FreeBSD
-readFileSync("<directory>"); // => <data>
+readFileSync('<directory>'); // => <data>
 ```
 
 implemented in `products.service.ts`
@@ -1802,16 +2100,24 @@ const products = readProducts();
 We've done separation of concerns properly now.
 
 - `service.ts`
-  - handles file reading + data processing
+    
+    - handles file reading + data processing
+        
 - `controller.ts`
-  - handles HTTP response logic
+    
+    - handles HTTP response logic
+        
 
 This is important because:
 
 - business logic stays reusable
+    
 - controller stays cleaner
+    
 - debugging becomes easier
+    
 - code becomes scalable and maintainable
+    
 
 Now our backend layers have proper responsibility separation.
 
@@ -1822,10 +2128,12 @@ Now, we're gonna build dynamic route handling for fetching a single product usin
 Previously:
 
 - `/products` → returned all products
+    
 
 Now:
 
 - `/products/1` → should return only the product with id `1`
+    
 
 This is one of the most common REST API patterns.
 
@@ -1838,7 +2146,9 @@ We want to go to path `/products/1`
 Here:
 
 - `products` → route name
+    
 - `1` → dynamic product id
+    
 
 We can extract the id from the URL by splitting the string.
 
@@ -1857,7 +2167,10 @@ B --index: 2--> C["'1'"]
 const urlParts = url?.split("/");
 
 // if route is /products/:id then extract the id, otherwise return null
-const id = urlParts && urlParts[1] == "products" ? Number(urlParts[2]) : null;
+const id =
+  urlParts && urlParts[1] == "products"
+    ? Number(urlParts[2])
+    : null;
 
 console.log(id);
 ```
@@ -1910,7 +2223,10 @@ export const productsController = (
   const urlParts = url?.split("/");
 
   // if route is /products/:id then extract the id, otherwise return null
-  const id = urlParts && urlParts[1] == "products" ? Number(urlParts[2]) : null;
+  const id =
+    urlParts && urlParts[1] == "products"
+      ? Number(urlParts[2])
+      : null;
 
   // fetch all products
   if (url == "/products" && method == "GET") {
@@ -2035,7 +2351,9 @@ node gives us an `on` method on the request object. we use it to listen to event
 import type { IncomingMessage } from "node:http";
 
 export const parseBody = (req: IncomingMessage): Promise<any> => {
+
   return new Promise((resolve, reject) => {
+    
     let body = "";
 
     req.on("data", (chunk) => {
@@ -2180,7 +2498,7 @@ const products = readProducts();
 
 const newProduct = {
   id: Date.now(),
-  ...body,
+  ...body
 };
 
 products.push(newProduct);
@@ -2213,7 +2531,7 @@ We need a service function that rewrites the DB file every time data changes.
 
 ```ts
 export const insertProduct = (payload: any) => {
-  // Payload = the JSON body inside the POST request (the actual data you send to the server).
+// Payload = the JSON body inside the POST request (the actual data you send to the server).
   fs.writeFileSync(filePath, JSON.stringify(payload));
 };
 ```
@@ -2421,17 +2739,23 @@ else if (method == "PUT" && id != null) {
 
 > [!CAUTION]  
 > Remember to handle edge cases like:
->
+> 
 > - `id < 0`
+>     
 > - invalid id types (`abc`, `null`, `undefined`)
+>     
 > - product not found
+>     
 > - empty request body
+>     
 > - missing fields
+>     
 > - duplicate data
+>     
 > - invalid JSON body
->
+>     
+> 
 > Backend APIs should always validate data before processing requests.
-
 ## DELETE method implementation
 
 DELETE is used to remove a resource from the server.
@@ -2474,7 +2798,7 @@ else if (method == "DELETE" && id != null) {
 ### How `splice()` works
 
 ```ts
-array.splice(startIndex, deleteCount);
+array.splice(startIndex, deleteCount)
 ```
 
 Example:
@@ -2486,7 +2810,9 @@ products.splice(index, 1);
 Meaning:
 
 - start deleting from `index`
+    
 - delete `1` item
+    
 
 ---
 
@@ -2521,12 +2847,16 @@ After delete:
 
 > [!CAUTION]  
 > Handle edge cases:
->
+> 
 > - invalid id
+>     
 > - `id < 0`
+>     
 > - product not found
+>     
 > - `findIndex()` returning `-1`
->
+>     
+> 
 > If `splice(-1, 1)` runs accidentally, it will delete the last item of the array.
 
 ## Edge case handling
@@ -2534,6 +2864,7 @@ After delete:
 ---
 
 1. **Getting a single product by id:** What if that product doesn't exist?
+    
 
 ```ts
 if (product == null) {
@@ -2553,6 +2884,7 @@ if (product == null) {
 ---
 
 2. **Updating / deleting product:** What if index is invalid?
+    
 
 ```ts
 if (index < 0) {
@@ -2574,19 +2906,26 @@ if (index < 0) {
 ### Important edge case logic
 
 - `find()` → returns `null` / `undefined` if not found
+    
 - `findIndex()` → returns `-1` if not found
+    
 
 So always check:
 
 - `if (product == null)`
+    
 - `if (index < 0)`
+    
 
 before doing:
 
 - update (`products[index] = ...`)
+    
 - delete (`splice(index, 1)`)
+    
 
 Otherwise you'll silently corrupt data (like deleting last element when index = -1).
+
 
 ## Optimizing `sendResponse`
 
@@ -2637,9 +2976,13 @@ export const sendResponse = () => {
 This doesn’t work because:
 
 - `res` is not in scope
+    
 - `products` is not in scope
+    
 - message/status are hardcoded
+    
 - not reusable
+    
 
 ---
 
@@ -2676,9 +3019,13 @@ export const sendResponse = (
 ### Why this works better
 
 - reusable across GET / POST / PUT / DELETE
+    
 - consistent response structure
+    
 - avoids duplication
+    
 - easier to maintain (change format once, updates everywhere)
+    
 
 ---
 
@@ -2686,9 +3033,20 @@ export const sendResponse = (
 
 ```ts
 try {
-  sendResponse(res, true, 200, "Products retrieved successfully", products);
+  sendResponse(
+    res,
+    true,
+    200,
+    "Products retrieved successfully",
+    products,
+  );
 } catch (err) {
-  sendResponse(res, false, 500, "Something went wrong");
+  sendResponse(
+    res,
+    false,
+    500,
+    "Something went wrong",
+  );
 }
 ```
 
@@ -2702,44 +3060,42 @@ Now every controller uses a single standardized response format instead of repea
 
 %% what is the use of .env %%
 
-1.  Install dotenv
-    ```
-    npm i dotenv
-    ```
-2.  Open file `.env` in the root and let's put our port in it
-    `.env`
-    ```ts
-    POST = 5000;
-    ```
-3.  create file `./src/config/index.ts`
-    Get the path of the .env file here
+1. Install dotenv
+   ```
+   npm i dotenv
+   ```
+2. Open file `.env` in the root and let's put our port in it
+   `.env`
+   ```ts
+   POST = 5000
+   ```
+3. create file `./src/config/index.ts`
+   Get the path of the .env file here
+   ```ts
+	import dotenv from "dotenv";
+	import path from "node:path";
+	
+	dotenv.config({
+	  path: path.resolve(process.cwd(), ".env"),
+	});
+   ```
+4. Got the path, now get the data from it (e.g : PORT)
 
-    ```ts
-    import dotenv from "dotenv";
-    import path from "node:path";
-
-    dotenv.config({
-      path: path.resolve(process.cwd(), ".env"),
-    });
-    ```
-
-4.  Got the path, now get the data from it (e.g : PORT)
-
-        ```ts
-        import dotenv from "dotenv";
-
-    import path from "node:path";
+	```ts
+	import dotenv from "dotenv";
+import path from "node:path";
 
 dotenv.config({
-path: path.resolve(process.cwd(), ".env"),
+  path: path.resolve(process.cwd(), ".env"),
 });
 
+
 const config = {
-port:process.env.PORT,
+    port:process.env.PORT,
 }
 
 export default config
-```
+	```
 
 Now, replace every single explicit port number with `config.port`
 **Data hidden successfully**
@@ -2750,52 +3106,52 @@ import routeHandler from "./routes/route";
 import config from "./config";
 
 const server: Server = createServer((req: IncomingMessage, res) => {
-  routeHandler(req, res);
+    routeHandler(req,res);
 });
 
 server.listen(config.port, () => {
-  console.log("server is running on port:", config.port);
+  console.log("server is running on port:",config.port);
 });
 ```
 
-# Module 7: Express js server architecture and Database integration
+#  Module 7: Express js server architecture and Database integration
 
 ## Create server with express js and ts
 
 1. Create folder --> initialize --> get ts dependencies --> get config
    ```bash
-   npm init --y
+   npm init --y 
    npm i -D typescript
    npx tsc --init
    ```
 2. Make some edits in tsconfig.json
-
    ```js
    "rootDir": "./src",
     "outDir": "./dist",
-
+    
     "module": "esnext",
     "target": "esnext",
     "types": ["node"],
-
+    
     // "jsx": "react-jsx",
    ```
 
 3. As mentioned in tsconfig.json, create folders `./src/server.ts`
 
-   **Now, we start coding in express.js**
+	**Now, we start coding in express.js**
 
-   Doc: https://expressjs.com/en/
+	Doc: https://expressjs.com/en/
+
 
 **First code:** Just go with the flow (doc + vscode suggestions)
 
 ```js
-import express from "express";
+import express from 'express';
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
 app.listen(port, () => {
@@ -2809,7 +3165,7 @@ Include this is the `package.json/scripts`
 "dev":"tsx watch ./src/server.ts",
 ```
 
-## Understanding express request and response
+## Understanding express request and response 
 
 The types in express are defined differently than node.js
 
@@ -2838,11 +3194,7 @@ app.listen(port, () => {
 Look at this code
 
 ```ts
-import express, {
-  type Application,
-  type Request,
-  type Response,
-} from "express";
+import express, { type Application, type Request, type Response } from "express";
 
 const app: Application = express();
 const port = 3000;
@@ -2876,11 +3228,7 @@ Now, the client can see the password, which is not correct.
 So we should destruct the whole object and avoid sending the password in the response.
 
 ```ts
-import express, {
-  type Application,
-  type Request,
-  type Response,
-} from "express";
+import express, { type Application, type Request, type Response } from "express";
 
 const app: Application = express();
 const port = 3000;
@@ -2911,10 +3259,7 @@ app.listen(port, () => {
 **Response:**
 
 ```json
-{
-  "message": "created",
-  "data": { "name": "Mahmud", "email": "abdullahmahmud01798@gmail.com" }
-}
+{"message":"created","data":{"name":"Mahmud","email":"abdullahmahmud01798@gmail.com"}}
 ```
 
 Password is not sent in the response now.
@@ -2994,10 +3339,15 @@ SQL data types define the kind of data a column can store in a database table. T
 Used for numbers.
 
 - `INT` / `INTEGER` → whole numbers (e.g., 1, 100, -5)
+    
 - `SMALLINT` → smaller range integers
+    
 - `BIGINT` → very large integers
+    
 - `DECIMAL(p, s)` / `NUMERIC(p, s)` → exact decimal values (e.g., 10.25)
+    
 - `FLOAT` / `REAL` / `DOUBLE PRECISION` → approximate decimal numbers
+    
 
 ---
 
@@ -3006,14 +3356,18 @@ Used for numbers.
 Used for text data.
 
 - `CHAR(n)` → fixed-length string
+    
 - `VARCHAR(n)` → variable-length string (most commonly used)
+    
 - `TEXT` → large or unlimited text
+    
 
 ---
 
 ### 3. Boolean Type
 
 - `BOOLEAN` → stores `TRUE` or `FALSE`
+    
 
 ---
 
@@ -3022,9 +3376,13 @@ Used for text data.
 Used for storing time-related values.
 
 - `DATE` → date only (YYYY-MM-DD)
+    
 - `TIME` → time only
+    
 - `TIMESTAMP` → date + time
+    
 - `TIMESTAMPTZ` → timestamp with timezone (common in PostgreSQL/NeonDB)
+    
 
 ---
 
@@ -3033,22 +3391,25 @@ Used for storing time-related values.
 Used for raw data like files or images.
 
 - `BYTEA` (PostgreSQL) → binary data storage
+    
 
 ---
 
 ### 6. JSON Types (important for modern apps)
 
 - `JSON` → stores JSON as text
+    
 - `JSONB` → optimized binary JSON (faster querying, preferred in PostgreSQL/NeonDB)
+    
 
 ---
 
 ### Example Table
 
-| id (SERIAL) | student_id (INTEGER) | name (VARCHAR(50)) | dob (DATE) | is_enrolled (BOOLEAN) |
-| ----------- | -------------------- | ------------------ | ---------- | --------------------- |
-| 1           | 1023                 | Emma               | 2001-06-12 | true                  |
-| 2           | 2045                 | Liam               | 2000-09-30 | false                 |
+|id (SERIAL)|student_id (INTEGER)|name (VARCHAR(50))|dob (DATE)|is_enrolled (BOOLEAN)|
+|---|---|---|---|---|
+|1|1023|Emma|2001-06-12|true|
+|2|2045|Liam|2000-09-30|false|
 
 ---
 
@@ -3069,11 +3430,10 @@ const pool = new Pool({
 
 const initDB = async () => {
   try {
-    await pool
-      .query
+    await pool.query(
       // we'll form the table here
       // await: because the connection between project and DB takes time (fixed comment)
-      ();
+    );
   } catch (error) {
     console.log(error);
   }
@@ -3112,7 +3472,7 @@ initDB(); // function called
 
 Database created. Now go to NeonDB project dashboard → tables.
 
-![Pasted-image-20260522201947.png](../media/Pasted-image-20260522201947.png)
+![Pasted-image-20260522201947.png](Pasted-image-20260522201947.png)
 
 We can see a table called `users`, and the full table structure has been created successfully.
 
@@ -3143,7 +3503,7 @@ app.post("/", async (req: Request, res: Response) => {
     INSERT INTO users (name, age, email, password)
     VALUES ($1, $2, $3, $4) RETURNING * 
     `,
-    [name, age, email, password],
+    [name, age, email, password]
     // * = all columns
   );
 
@@ -3157,14 +3517,14 @@ app.post("/", async (req: Request, res: Response) => {
 Now send a request using the `POST` method.  
 The data will be stored in the database table.
 
-![Pasted-image-20260522222021.png](../media/Pasted-image-20260522222021.png)
+![Pasted-image-20260522222021.png](Pasted-image-20260522222021.png)
 
 ### Precaution
 
 The sequence of values inside the array:
 
 ```ts
-[name, age, email, password];
+[name, age, email, password]
 ```
 
 must always match the sequence of table columns:
@@ -3182,6 +3542,7 @@ Otherwise, the wrong data may be inserted into the wrong columns.
 ```ts
 email VARCHAR(50) NOT NULL UNIQUE,
 ```
+
 
 We wrap the database operation inside a `try-catch` block to handle runtime and database errors safely instead of crashing the server.
 
@@ -3230,12 +3591,16 @@ app.post("/", async (req: Request, res: Response) => {
 ### Key Points
 
 - `try` → runs database insert safely
+    
 - `catch` → handles unexpected failures
+    
 - Validation prevents empty required fields from entering DB
+    
 - `23505` → PostgreSQL error code for **unique constraint violation** (e.g., duplicate email)
+    
 - `RETURNING *` → returns the newly inserted user row
+    
 - `result.rows[0]` → fetches the inserted record from PostgreSQL response
-
 ## Getting All Users and Single User with Params
 
 Doc: [https://www.w3schools.com/postgresql/postgresql_fetch_data.php](https://www.w3schools.com/postgresql/postgresql_fetch_data.php)
@@ -3475,22 +3840,22 @@ npm i dotenv
 ```
 
 create `/src/config/index.ts`
-
 ```ts
-import dotenv from "dotenv";
-import path from "path";
+import dotenv from 'dotenv'
+import path from 'path'
 
 dotenv.config({
-  path: path.join(process.cwd(), ".env"),
-});
+    path: path.join(process.cwd(),".env")
+})
 
 const config = {
-  connectionString: process.env.CONNECTIONSTRING as string,
-  port: process.env.PORT,
+    connectionString: process.env.CONNECTIONSTRING as string,
+    port: process.env.PORT
 };
 
 export default config;
 ```
+
 
 # Module 8: Advanced backend structuring and user authentication
 
@@ -3501,8 +3866,11 @@ Software design patterns are standard ways to structure backend code. They help 
 Main idea:
 
 - Separate responsibilities
+    
 - Reuse logic
+    
 - Make scaling easier
+    
 
 ---
 
@@ -3515,25 +3883,36 @@ MVC is a layered architecture pattern where responsibilities are split into thre
 #### Model
 
 - Handles database structure and queries
+    
 - Defines schema (table structure)
+    
 - Communicates directly with DB
+    
 
 #### Controller
 
 - Handles request and response logic
+    
 - Validates input
+    
 - Calls services/models
+    
 
 #### View
 
 - UI layer (not used in pure backend APIs)
+    
 - In backend APIs, "view" is usually JSON response
+    
 
 Extra parts:
 
 - Routes → maps endpoints to controllers
+    
 - Interfaces → defines TypeScript structure (types)
+    
 - Services → business logic layer (optional but common)
+    
 
 ---
 
@@ -3594,10 +3973,15 @@ Admin
 ### What each file does
 
 - **interface.ts** → defines data shape (TypeScript types)
+    
 - **routes.ts** → connects endpoints to controllers
+    
 - **model.ts** → DB schema + raw queries
+    
 - **controller.ts** → handles req/res logic
+    
 - **service.ts** → business logic (core rules, reusable logic)
+    
 
 ---
 
@@ -3631,23 +4015,31 @@ src
 ### Modular (Feature-based)
 
 - Groups everything by feature (student/admin)
+    
 - Easier scaling for large apps
+    
 - Cleaner when many modules exist
+    
 
 ### MVC (Layer-based)
 
 - Groups by responsibility (model/controller/service)
+    
 - Easier for beginners
+    
 - Better for small/medium apps
+    
 
 ---
 
 ### Conclusion
 
 - Small projects → MVC is simpler and faster to manage
+    
 - Large scalable systems → Modular is better
+    
 - Real-world backend systems → mostly **Modular + Service layer hybrid**
-
+    
 ---
 
 ### DRY, Fat Model / Thin Controller
@@ -3655,13 +4047,18 @@ src
 ### Short Intro
 
 - **DRY (Don’t Repeat Yourself)** → avoid duplicating logic
+    
 - **Fat Model** → model handles most logic (DB + business rules)
+    
 - **Thin Controller** → controller only handles request/response, nothing heavy
+    
 
 Goal:
 
 - Controllers stay clean
+    
 - Logic stays reusable and centralized
+    
 
 ---
 
@@ -3670,12 +4067,18 @@ Goal:
 Good backend design is about separating concerns:
 
 - Routes → entry point
+    
 - Controller → request handler
+    
 - Service → business logic
+    
 - Model → database layer
+    
 - Interface → type safety
+    
 
 This structure makes code scalable, maintainable, and production-ready.
+
 
 ## Cleaning up and creating app.ts
 
@@ -3727,12 +4130,19 @@ app.listen(port);
 ### What is done
 
 - Separated configuration (port, env variables)
+    
 - Separated database connection
+    
 - Moved Express app to `app.ts`
+    
 - Kept server startup in `server.ts`
+    
 - Clean architecture (config → db → app → server)
+    
 - Removed tight coupling between DB and routes
+    
 - Improved scalability and maintainability
+    
 
 ---
 
@@ -3753,9 +4163,13 @@ src/
 ### File responsibilities
 
 - **config/index.ts** → environment variables (port, DB url, secrets)
+    
 - **db/index.ts** → PostgreSQL pool + DB connection
+    
 - **app.ts** → Express app + middleware + routes
+    
 - **server.ts** → starts server + initializes DB
+    
 
 ---
 
@@ -3847,7 +4261,10 @@ app.get("/api/users/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const result = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
+    const result = await pool.query(
+      `SELECT * FROM users WHERE id = $1`,
+      [id],
+    );
 
     if (result.rows.length === 0) {
       return res.status(404).json({
@@ -4008,9 +4425,13 @@ export const initDB = async () => {
 ## Key improvement
 
 - server.ts → only starts server
+    
 - app.ts → only API logic
+    
 - db.ts → only database logic
+    
 - config → only environment values
+    
 
 This is the base structure used in real production backend systems.
 
@@ -4028,7 +4449,7 @@ src/
 │     ├─ users.controller.ts
 │     ├─ users.service.ts
 │     └─ users.interface.ts
-│
+│     
 ├─ db/
 ├─ config/
 ├─ app.ts
@@ -4042,16 +4463,20 @@ src/
 ### What’s done
 
 - Routes are moved out of `app.ts`
+    
 - `app.ts` only mounts feature routers
+    
 - All `/api/users` endpoints are grouped under one router
+    
 - Clean separation between app setup and business logic routing
+    
 
 ---
 
 ### `app.ts`
 
 ```ts
-app.use("/api/users", userRouter); // routing handled in users.routes.ts
+app.use('/api/users', userRouter); // routing handled in users.routes.ts
 ```
 
 ---
@@ -4125,7 +4550,10 @@ router.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const result = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
+    const result = await pool.query(
+      `SELECT * FROM users WHERE id = $1`,
+      [id],
+    );
 
     if (result.rows.length === 0) {
       return res.status(404).json({
@@ -4154,9 +4582,13 @@ export const userRouter = router;
 ### What’s done
 
 - Routes only define endpoints
+    
 - Controller handles request/response logic
+    
 - Business logic still partially inside controller
+    
 - Better separation than routes-only structure
+    
 
 ---
 
@@ -4238,7 +4670,10 @@ const getSingleUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const result = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
+    const result = await pool.query(
+      `SELECT * FROM users WHERE id = $1`,
+      [id],
+    );
 
     if (result.rows.length === 0) {
       return res.status(404).json({
@@ -4271,10 +4706,15 @@ export const userController = {
 ### What’s done
 
 - Controller no longer directly writes SQL logic (or minimized)
+    
 - Database logic moved to service layer
+    
 - Service handles all PostgreSQL queries
+    
 - Controller only calls service functions
+    
 - Cleaner separation: Controller → Service → DB
+    
 
 ---
 
@@ -4334,7 +4774,10 @@ const getAllUsersFromDB = async () => {
 };
 
 const getSingleUserFromDB = async (id: any) => {
-  return await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
+  return await pool.query(
+    `SELECT * FROM users WHERE id = $1`,
+    [id],
+  );
 };
 
 const updateUserInDB = async (id: any, payload: any) => {
@@ -4382,9 +4825,13 @@ export const userService = {
 ## Summary
 
 - Routes → define endpoints only
+    
 - Controller → handles request/response
+    
 - Service → handles DB logic
+    
 - DB → pure connection layer
+    
 
 This is the real-world backend structure used in production systems for scalability and maintainability.
 
@@ -4465,30 +4912,40 @@ export const initDB = async () => {
 ### 1. Foreign Key (`user_id`)
 
 - Links `profiles.user_id` → `users.id`
+    
 - Ensures every profile belongs to a valid user
+    
 
 ---
 
 ### 2. `UNIQUE` constraint
 
 - Ensures **one profile per user**
+    
 - Prevents multiple profiles for the same user
+    
 
 ---
 
 ### 3. `ON DELETE CASCADE`
 
 - If a user is deleted → their profile is automatically deleted
+    
 - Maintains data consistency (no orphan profiles)
+    
 
 ---
 
 ## Relationship Summary
 
 - `users` = main entity
+    
 - `profiles` = extended user data
+    
 - Relationship type = **one-to-one**
+    
 - Enforced via `FOREIGN KEY + UNIQUE`
+    
 
 ---
 
@@ -4497,7 +4954,9 @@ export const initDB = async () => {
 This setup normalizes the database:
 
 - Core authentication data stays in `users`
+    
 - Extended personal information stays in `profiles`
+    
 - Data integrity is enforced at database level (not just backend logic)
 
 ## Creating user profiles
@@ -4505,7 +4964,7 @@ This setup normalizes the database:
 ### 1. `app.ts`
 
 ```ts
-app.use("/api/profiles", profileRoute);
+app.use("/api/profiles", profileRoute)
 ```
 
 ### 2. `profiles.route.ts`
@@ -4516,13 +4975,13 @@ import { profileContoller } from "./profiles.controller";
 
 const router = Router();
 
-router.post("/", profileContoller.createProfile); // create profile
-router.get("/", profileContoller.getAllProfiles); // get all profiles
-router.get("/:id", profileContoller.getSingleProfile); // get single profile
-router.put("/:id", profileContoller.updateProfile); // update profile
-router.delete("/:id", profileContoller.deleteProfile); // delete profile
+router.post("/",profileContoller.createProfile); // create profile
+router.get("/",profileContoller.getAllProfiles) // get all profiles
+router.get("/:id",profileContoller.getSingleProfile) // get single profile
+router.put("/:id",profileContoller.updateProfile); // update profile
+router.delete("/:id",profileContoller.deleteProfile); // delete profile
 
-export const profileRoute = router;
+export const profileRoute = router; 
 ```
 
 ### 3. `profiles.controller.ts`
@@ -4632,12 +5091,13 @@ const deleteProfile = async (req: Request, res: Response) => {
       message: "Deleted profile successfully.",
       data: result.rows[0],
     });
+
   } catch (error: any) {
     res.status(500).json({
       success: false,
       message: error.message,
-      error: error,
-    });
+      error: error
+    })
   }
 };
 
@@ -4646,7 +5106,7 @@ export const profileContoller = {
   getAllProfiles,
   getSingleProfile,
   updateProfile,
-  deleteProfile,
+  deleteProfile
 };
 ```
 
@@ -4772,7 +5232,7 @@ export const profileService = {
   getAllProfilesFromDB,
   getSingleProfileFromDB,
   updateProfileInDB,
-  deleteProfileFromDB,
+  deleteProfileFromDB
 };
 ```
 
@@ -4781,12 +5241,16 @@ export const profileService = {
 Authentication and authorization are core parts of backend security systems.
 
 - **Authentication** → verifies _who the user is_
+    
 - **Authorization** → verifies _what the user can access_
+    
 
 Example:
 
 - Login system → authentication
+    
 - Admin dashboard permission → authorization
+    
 
 ---
 
@@ -4797,26 +5261,37 @@ Authentication is the process of verifying user identity.
 Example:
 
 - Email + password login
+    
 - OTP verification
+    
 - Google login
+    
 
 ---
 
 ### Core Types of Authentication
 
 1. Session-based (Stateful)
+    
 2. JWT-based (Stateless)
+    
 
 ---
 
 ### Session-based Authentication (Stateful)
 
 - The server stores user session data on its side
+    
 - The client (browser) receives a session ID stored in cookies
+    
 - On every request → the cookie is sent → server verifies the session
+    
 - Called **stateful** because the server stores session information
+    
 - Requires server-side storage
+    
 - Harder to scale in large distributed systems
+    
 
 #### Flow
 
@@ -4836,11 +5311,17 @@ Server --> Client
 JWT = JSON Web Token
 
 - After login, the server generates a JWT token
+    
 - The token is stored on the client side
+    
 - On every request → token is sent → server verifies it
+    
 - Called **stateless** because the server stores no session data
+    
 - Faster and easier to scale
+    
 - Common in modern REST APIs and mobile apps
+    
 
 #### Flow
 
@@ -4855,13 +5336,13 @@ Server --> Client
 
 ### Session vs JWT
 
-| Feature     | Session-based        | JWT-based                 |
-| ----------- | -------------------- | ------------------------- |
-| Storage     | Server-side          | Client-side               |
-| Stateful    | Yes                  | No                        |
-| Scalability | Lower                | Higher                    |
-| Speed       | Slightly slower      | Faster                    |
-| Best for    | Traditional web apps | Modern APIs / mobile apps |
+|Feature|Session-based|JWT-based|
+|---|---|---|
+|Storage|Server-side|Client-side|
+|Stateful|Yes|No|
+|Scalability|Lower|Higher|
+|Speed|Slightly slower|Faster|
+|Best for|Traditional web apps|Modern APIs / mobile apps|
 
 ---
 
@@ -4872,16 +5353,22 @@ Authorization determines what an authenticated user is allowed to do.
 Example:
 
 - Admin can delete users
+    
 - Normal user cannot access admin routes
+    
 
 ---
 
 ### Core Types of Authorization
 
 1. Role-Based Access Control (RBAC)
+    
 2. Permission-Based Access
+    
 3. Attribute-Based Access Control (ABAC)
+    
 4. Policy-Based Access Control (PBAC)
+    
 
 ---
 
@@ -4892,14 +5379,20 @@ Access is controlled based on user roles.
 #### Example
 
 - Admin → full access
+    
 - User → limited access
+    
 - Agent → special permissions
+    
 
 #### Common in
 
 - Dashboards
+    
 - CMS systems
+    
 - Admin panels
+    
 
 ---
 
@@ -4910,7 +5403,9 @@ Permissions are assigned individually.
 #### Example
 
 - User 1 → read + write
+    
 - User 2 → read only
+    
 
 #### Benefit
 
@@ -4927,16 +5422,24 @@ Access depends on multiple attributes and conditions.
 Only allow access if:
 
 - role = admin
+    
 - AND location = Bangladesh
+    
 - AND time = office hours
+    
 
 #### Common attributes
 
 - User role
+    
 - Location
+    
 - Device
+    
 - Time
+    
 - Department
+    
 
 ---
 
@@ -4947,25 +5450,34 @@ Access is controlled using defined business policies.
 #### Example
 
 - Only premium users can access this route
+    
 - Only verified users can withdraw money
+    
 
 #### Common in
 
 - Banking systems
+    
 - SaaS applications
+    
 - Subscription systems
+    
 
 ---
 
 ### Conclusion
 
 - Authentication → verifies identity
+    
 - Authorization → controls permissions
+    
 
 Modern backend systems commonly use:
 
 - JWT for authentication
+    
 - RBAC or Permission-based systems for authorization
+    
 
 As systems grow larger, ABAC and PBAC provide more flexible and scalable access control mechanisms.
 
@@ -5088,16 +5600,22 @@ const createUserIntoDB = async (payload: User) => {
 Even hashed passwords should not be exposed in API responses because:
 
 - It leaks sensitive authentication-related data
+    
 - Attackers may attempt brute-force attacks offline
+    
 - It is considered bad backend security practice
+    
 
 ---
 
 ### Outcome
 
 - Passwords are no longer stored as plain text
+    
 - User passwords are securely hashed using bcrypt
+    
 - Password field is removed from API responses
+    
 - Backend authentication security is now significantly improved
 
 ## Introduction to JWT (JSON Web Token)
@@ -5111,9 +5629,13 @@ It is commonly used in authentication systems to securely transfer information b
 JWT-based authentication is widely used in modern applications because it is:
 
 - Faster
+    
 - Scalable
+    
 - Stateless
+    
 - Suitable for APIs and distributed systems
+    
 
 ---
 
@@ -5128,8 +5650,11 @@ xxxxx.yyyyy.zzzzz
 These 3 parts are:
 
 1. Header
+    
 2. Payload
+    
 3. Signature
+    
 
 ---
 
@@ -5147,7 +5672,9 @@ Example:
 ```
 
 - `alg` → which algorithm is used to generate the token
+    
 - `typ` → token type (`JWT`)
+    
 
 ---
 
@@ -5170,9 +5697,13 @@ This data is usually called **claims**.
 Common payload data:
 
 - user id
+    
 - email
+    
 - role
+    
 - permissions
+    
 
 ---
 
@@ -5183,8 +5714,11 @@ The signature is used to verify whether the token is valid or modified.
 It is created using:
 
 - Header
+    
 - Payload
+    
 - Secret key
+    
 
 The server combines all of them using an algorithm and generates a unique signature.
 
@@ -5201,18 +5735,27 @@ If someone changes the token data, the signature becomes invalid.
 ### Step-by-step flow
 
 1. User sends email and password to the server
+    
 2. Server checks:
-   - user exists or not
-   - password matches or not
-
+    
+    - user exists or not
+        
+    - password matches or not
+        
 3. If valid:
-   - server creates a payload
-   - generates a JWT token
-
+    
+    - server creates a payload
+        
+    - generates a JWT token
+        
 4. Server sends the token to the client
+    
 5. Client stores the token
+    
 6. Client sends the token in future requests
+    
 7. Server verifies the token and identifies the user
+    
 
 ---
 
@@ -5244,15 +5787,19 @@ sequenceDiagram
 To generate a JWT token:
 
 - create a payload
+    
 - use `jwt.sign()`
+    
 - provide a secret key
+    
 - provide expiration time
+    
 
 Example idea:
 
 ```ts
 jwt.sign(payload, secret, {
-  expiresIn: "1d",
+  expiresIn: "1d"
 });
 ```
 
@@ -5265,13 +5812,18 @@ JWT tokens usually have an expiration time.
 Example:
 
 - 1 hour
+    
 - 1 day
+    
 - 7 days
+    
 
 After expiration:
 
 - user must login again
+    
 - a new token is generated
+    
 
 This improves security.
 
@@ -5282,14 +5834,20 @@ This improves security.
 Previously we learned two authentication systems:
 
 1. Session-based authentication
+    
 2. JWT-based authentication
+    
 
 JWT-based authentication is more popular in modern backend systems because:
 
 - server does not store session data
+    
 - easier to scale
+    
 - faster for APIs
+    
 - works well with mobile and frontend frameworks
+    
 
 ---
 
@@ -5298,9 +5856,13 @@ JWT-based authentication is more popular in modern backend systems because:
 Authentication mainly handles:
 
 - login
+    
 - token generation
+    
 - token verification
+    
 - protected routes
+    
 
 To implement authentication properly, we usually create a separate module:
 
@@ -5356,8 +5918,8 @@ const loginUserIntoDB = async (payload: {
 };
 
 export const authService = {
-  loginUserIntoDB,
-};
+    loginUserIntoDB
+}
 ```
 
 Now, we have to generate a JWT
@@ -5400,7 +5962,7 @@ const jwtPayload = {
 };
 
 // generate token
-const token = jwt.sign(jwtPayload, "ccnacomptia420", {
+const token = jwt.sign(jwtPayload, "sudanirfua420", {
   expiresIn: "2d",
 });
 
@@ -5414,7 +5976,7 @@ return token;
 #### JWT Payload
 
 ```ts
-const jwtPayload = {A
+const jwtPayload = {
   id: user.id,
   name: user.name,
   email: user.email,
@@ -5427,34 +5989,44 @@ This payload contains the user information that will be stored inside the token.
 Usually we store:
 
 - user id
+    
 - email
+    
 - role
+    
 - permissions
+    
 
 We should avoid storing sensitive data like:
 
 - password
+    
 - OTP
+    
 - secret information
+    
 
 ---
 
 #### `jwt.sign()`
 
 ```ts
-jwt.sign(payload, secret, options);
+jwt.sign(payload, secret, options)
 ```
 
 - `payload` → data inside token
+    
 - `secret` → secret key used for signature generation
+    
 - `options` → additional settings like expiration time
+    
 
 ---
 
 #### Expiration
 
 ```ts
-expiresIn: "2d";
+expiresIn: "2d"
 ```
 
 The token will expire after 2 days.
@@ -5462,14 +6034,16 @@ The token will expire after 2 days.
 After expiration:
 
 - token becomes invalid
+    
 - user must login again
+    
 
 ---
 
 ### Important
 
 ```ts
-"ccnacomptia420";
+"sudanirfua420"
 ```
 
 This secret key should never be hardcoded.
@@ -5479,13 +6053,13 @@ Move it into environment variables or config files.
 Example:
 
 ```env
-JWT_SECRET=ccnacomptia420
+JWT_SECRET=sudanirfua420
 ```
 
 Then use:
 
 ```ts
-config.jwt_secret;
+config.jwt_secret
 ```
 
 ---
@@ -5528,8 +6102,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 This token contains:
 
 - Header
+    
 - Payload
+    
 - Signature
+    
 
 ---
 
@@ -5556,9 +6133,13 @@ sequenceDiagram
 ### Outcome
 
 - User can now login using JWT authentication
+    
 - Server generates a token after successful login
+    
 - Token contains user identity information
+    
 - Authentication becomes stateless
+    
 - Backend is now ready for protected routes and authorization systems
 
 # Module 9: Authorization and Middleware (Express)
@@ -5576,8 +6157,11 @@ Middleware is a **middle layer (middle man)** between request and response.
 It behaves like a translator / tour guide:
 
 - Client sends request
+    
 - Server processes it in multiple layers
+    
 - Middleware sits in between and processes/filters requests before they reach the controller
+    
 
 ---
 
@@ -5609,7 +6193,9 @@ Express provides built-in middleware.
 Examples:
 
 - `express.json()` → parses JSON body
+    
 - `express.text()` → parses text input
+    
 
 #### Flow
 
@@ -5624,8 +6210,11 @@ Routes --> Controller
 What it does:
 
 - preprocess request
+    
 - convert raw data into usable format
+    
 - forward to route handler
+    
 
 ---
 
@@ -5636,10 +6225,15 @@ Custom middleware is written by developers.
 Used for:
 
 - authentication checks
+    
 - authorization checks
+    
 - validation
+    
 - logging
+    
 - request blocking
+    
 
 ---
 
@@ -5659,8 +6253,11 @@ Route --> Middleware --> Controller --> Service --> DB
 Middleware receives:
 
 - `req`
+    
 - `res`
+    
 - `next()`
+    
 
 #### Execution flow
 
@@ -5674,7 +6271,9 @@ Decision -- no --> Blocked_Request
 If `next()` is not called:
 
 - request stops
+    
 - stays pending / blocked
+    
 
 ---
 
@@ -5690,12 +6289,16 @@ Request --> M1 --> M2 --> M3 --> Controller
 Each middleware:
 
 - validates something
+    
 - modifies request if needed
+    
 - calls `next()` to continue
+    
 
 If any middleware blocks:
 
 - chain stops immediately
+    
 
 ---
 
@@ -5730,9 +6333,13 @@ Route --> Middleware --> Controller
 Reason:
 
 - block unauthorized users early
+    
 - prevent invalid requests from reaching business logic
+    
 - reduce unnecessary DB load
+    
 - improve security and structure
+    
 
 ---
 
@@ -5743,16 +6350,24 @@ Middleware is a **core architectural layer in Express**.
 It acts as:
 
 - filter
+    
 - validator
+    
 - gatekeeper
+    
 - logger
+    
 - authorization handler
+    
 
 It is essential for:
 
 - authentication flow control
+    
 - authorization enforcement
+    
 - request validation
+    
 - system security and scalability
 
 ---
@@ -5764,14 +6379,20 @@ It is essential for:
 Here, we're going to log every request's:
 
 - time
+    
 - method
+    
 - URL
+    
 
 This is useful for:
 
 - tracking API activity
+    
 - debugging
+    
 - monitoring requests
+    
 
 ```mermaid
 flowchart LR
@@ -5784,13 +6405,13 @@ Middleware --> log.txt
 ```ts
 // don't memorize, get em from docs
 app.use((req, res, next) => {
+
   const log = `Url: ${req.url}, Method: ${req.method}, Time: ${Date.now()}\n`;
 
-  fs.appendFile("log.txt", log, (err) => {
-    // this'll append every request log in a file named `log.txt`
+  fs.appendFile("log.txt", log, (err) => { // this'll append every request log in a file named `log.txt`
     console.log(err);
   });
-
+  
   next(); // pass request to the next middleware / route
 });
 ```
@@ -5807,10 +6428,9 @@ Url: /api/users/1, Method: GET, Time: 1779983053737
 Without calling `next()`, the request will stay pending and won't reach the route/controller.
 
 ---
-
 ### clean up
 
-`./src/middlewares/logger.ts`
+`./src/middlewares/logger.ts` 
 
 ```ts
 import type { NextFunction, Request, Response } from "express";
@@ -5834,7 +6454,6 @@ export default logger;
 ```ts
 app.use(logger);
 ```
-
 ## Creating auth middleware
 
 `middlewares/auth.ts`
@@ -5842,9 +6461,9 @@ app.use(logger);
 ```ts
 import type { NextFunction, Request, Response } from "express";
 
-const auth = (req: Request, res: Response, next: NextFunction) => {
-  console.log("This is protected route.");
-};
+const auth = (req:Request, res:Response, next:NextFunction) => {
+    console.log("This is protected route.");
+}
 
 export default auth;
 ```
@@ -5901,14 +6520,18 @@ We can also send our JWT token through headers.
 When a user sends a request to the `/users` route, we'll check for the token inside the headers.
 
 1. Get the token  
-   ![Pasted-image-20260528222316.png](../media/Pasted-image-20260528222316.png)
+    ![Pasted-image-20260528222316.png](Pasted-image-20260528222316.png)
+    
 2. Go to client (Postman) and do as shown below  
-   ![Pasted-image-20260528222639.png](../media/Pasted-image-20260528222639.png)
+    ![Pasted-image-20260528222639.png](Pasted-image-20260528222639.png)
+    
 
 Set:
 
 - header key → `authorization`
+    
 - value → JWT token
+    
 
 Then send the request.
 
@@ -5953,7 +6576,9 @@ export default auth;
 Now, the middleware checks whether the request contains a token inside the headers.
 
 - If token exists → request moves to the controller using `next()`
+    
 - If token does not exist → server returns `401 Unauthorized`
+    
 
 ```mermaid
 flowchart LR
@@ -5986,12 +6611,12 @@ console.log(decodedToken);
 
 ```json
 {
-  "id": 6,
-  "name": "testUser_forAuth",
-  "email": "testUser@gmail.com",
-  "is_active": true,
-  "iat": 1780036212,
-  "exp": 1780209012
+  id: 6,
+  name: "testUser_forAuth",
+  email: "testUser@gmail.com",
+  is_active: true,
+  iat: 1780036212,
+  exp: 1780209012
 }
 ```
 
@@ -6007,11 +6632,11 @@ const userData = await pool.query(
     SELECT * FROM users
     WHERE email = $1
   `,
-  [decodedToken.email],
-);
+  [decodedToken.email]
+)
 
 const user = userData.rows[0];
-console.log(user);
+console.log(user)
 ```
 
 Now, if the user exists in the database, they can access the route.
@@ -6040,8 +6665,11 @@ if (!user.is_active) {
 Now the middleware validates:
 
 - whether the token is real
+    
 - whether the user exists
+    
 - whether the account is active
+    
 
 Only after passing all validations should the request move to the controller using `next()`.
 
@@ -6061,8 +6689,11 @@ ActiveCheck -->|Invalid / Blocked| Forbidden
 Now, since we got:
 
 - JWT decoded
+    
 - DB checked
+    
 - activity status checked
+    
 
 we can safely attach the user data to the request object.
 
@@ -6105,7 +6736,7 @@ After validating the JWT and checking the user from the database, we attach the 
 
 This allows the next middleware/controller to directly access the authenticated user's data without validating the token again.
 
-## ## RBAC (Role-Based Access Control) System Implementation
+##  ## RBAC (Role-Based Access Control) System Implementation
 
 RBAC (Role-Based Access Control) allows us to control access to routes based on a user's role. Instead of giving every user the same permissions, we can define which roles are allowed to perform specific actions.
 
@@ -6187,7 +6818,7 @@ const jwtPayload = {
 
 Added some users to the database.
 
-![Pasted-image-20260530175931.png](../media/Pasted-image-20260530175931.png)
+![Pasted-image-20260530175931.png](Pasted-image-20260530175931.png)
 
 ### 2. Passing the role into the `auth()` function
 
@@ -6219,8 +6850,7 @@ router.get("/", auth("admin", "agent"), userController.getAllUsers);
 `auth.ts`
 
 ```ts
-const auth = (...roles: any[]) => {
-  // we'll define a type `Role` later
+const auth = (...roles: any[]) => { // we'll define a type `Role` later
 
   // ...... other codes
 
@@ -6235,18 +6865,18 @@ const auth = (...roles: any[]) => {
       message: "Forbidden",
     });
   }
-};
+}
 ```
 
 Let's make a GET request using an admin account.
 
 > Go to Postman (client) → log in with an admin email and password → get the token → put the token in the headers → send a GET request.
 
-![Pasted-image-20260530184559.png](../media/Pasted-image-20260530184559.png)
+![Pasted-image-20260530184559.png](Pasted-image-20260530184559.png)
 
 Now let's try the same request with a regular `user`.
 
-![Pasted-image-20260530184949.png](../media/Pasted-image-20260530184949.png)
+![Pasted-image-20260530184949.png](Pasted-image-20260530184949.png)
 
 The request is blocked because the user's role is not included in the allowed roles list.
 
@@ -6265,8 +6895,11 @@ export type Role = "admin" | "agent" | "user";
 This gives us:
 
 - autocomplete support
+    
 - compile-time type checking
+    
 - fewer spelling mistakes
+    
 - centralized role management for the entire project
 
 ## Access Token + Refresh Token (Video Flow Explanation)
@@ -6303,42 +6936,64 @@ K --> E
 #### 1. Login
 
 - User enters email and password
+    
 - Server checks if they are correct
+    
 - If correct → server gives two tokens
+    
 
 ---
 
 #### 2. Token Types
 
 - **Access Token**
-  - Short lifespan
-  - Used for normal requests
-  - Expires quickly for security
+    
+    - Short lifespan
+        
+    - Used for normal requests
+        
+    - Expires quickly for security
+        
 - **Refresh Token**
-  - Long lifespan
-  - Used only when access token expires
-  - Helps user stay logged in
+    
+    - Long lifespan
+        
+    - Used only when access token expires
+        
+    - Helps user stay logged in
+        
 
 ---
 
 #### 3. Normal Request Flow
 
 - User tries to access protected data
+    
 - Access token is sent with the request
+    
 - Server checks it:
-  - If valid → data is returned
-  - If expired → request is rejected
+    
+    - If valid → data is returned
+        
+    - If expired → request is rejected
+        
 
 ---
 
 #### 4. When Token Expires
 
 - Instead of asking user to log in again:
-  - System automatically uses refresh token
+    
+    - System automatically uses refresh token
+        
 - Server checks refresh token validity
+    
 - If valid:
-  - New access token is issued
-  - User continues without interruption
+    
+    - New access token is issued
+        
+    - User continues without interruption
+        
 
 ---
 
@@ -6362,16 +7017,22 @@ User->>Server: Retry request
 ### Core Idea
 
 - Access token = short permission pass
+    
 - Refresh token = long-term renewal key
+    
 - System keeps user logged in without repeated login
+    
 - Security stays strong because short-lived tokens reduce risk
+    
 
 ---
 
 ### Why This Matters
 
 - Improves user experience (no frequent login)
+    
 - Keeps system secure (short-lived access control)
+    
 - Prevents long-term abuse even if tokens are stolen
 
 ### Implementation
@@ -6379,7 +7040,7 @@ User->>Server: Retry request
 `config/index.ts`
 
 ```ts
-refreshKey: process.env.REFRESH_SECRET as string;
+refreshKey: process.env.REFRESH_SECRET as string
 ```
 
 ---
@@ -6413,10 +7074,11 @@ res.cookie("refreshToken", refreshToken, {
 Now, let's do a user login
 
 - it should give us an access token and refresh token in response and a refresh token in cookie
+    
 
 ---
 
-![Pasted-image-20260530224828.png](../media/Pasted-image-20260530224828.png)
+![Pasted-image-20260530224828.png](Pasted-image-20260530224828.png)
 
 **Response**
 
@@ -6436,6 +7098,7 @@ Now, let's do a user login
 Here we're going to do authentication token handling using refresh flow.
 
 1. Define a controller function that'll console the cookies
+    
 
 `auth.controller.ts`
 
@@ -6453,7 +7116,7 @@ router.post("/refresh-token", authController.refreshToken);
 
 So when we do a login and then POST on `/auth/refresh-token`, it should log the refresh token in the console.
 
-![image-2026531207649.png](../media/image-2026531207649.png)
+![image-2026531207649.png](image-2026531207649.png)
 
 But it logs `undefined`
 
@@ -6474,7 +7137,7 @@ app.use(cookieParser());
 
 ```json
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
@@ -6483,6 +7146,7 @@ Got it
 ---
 
 2. Now we're going to create a function for refreshing the access token so that the user can stay authenticated without logging in again.
+    
 
 `auth.service.ts`
 
@@ -6540,7 +7204,7 @@ Now use this in `auth.controller.ts` for handling the refresh request.
 const refreshToken = async (req: Request, res: Response) => {
   try {
     const result = await authService.refreshAccessToken(
-      req.cookies.refreshToken,
+      req.cookies.refreshToken
     );
 
     res.status(200).json({
@@ -6561,98 +7225,119 @@ const refreshToken = async (req: Request, res: Response) => {
 
 > [!NOTE]  
 > **JWT Access vs Refresh Token — What I Misunderstood**
->
+> 
 > **Initial Confusion**  
 > I thought both functions were just token generators for login, so I assumed:
->
+> 
 > - login generates access + refresh tokens
+>     
 > - refresh function should also generate both again
->
+>     
+> 
 > This led to confusion about why a second token generation step exists.
->
+> 
 > ---
->
+> 
 > **Correct Understanding**
->
+> 
 > **1. Login Phase (`loginUserIntoDB`)**  
 > This runs only once during authentication.
->
+> 
 > It:
->
+> 
 > - verifies email and password
+>     
 > - generates:
->   - **Access Token** → short-lived, used for API requests
->   - **Refresh Token** → long-lived, used to get new access tokens
->
+>     
+>     - **Access Token** → short-lived, used for API requests
+>         
+>     - **Refresh Token** → long-lived, used to get new access tokens
+>         
+> 
 > Output:
->
+> 
 > - both tokens are issued at login
->
+>     
+> 
 > ---
->
+> 
 > **2. Refresh Phase (`refreshAccessToken`)**  
 > This runs after login when the access token expires.
->
+> 
 > It:
->
+> 
 > - receives a **refresh token**
+>     
 > - verifies it
+>     
 > - generates:
->   - **new access token only**
->
+>     
+>     - **new access token only**
+>         
+> 
 > It does NOT generate a new refresh token.
->
+> 
 > ---
->
+> 
 > **Key Idea**
->
+> 
 > - **Access Token** → short-term API authorization
+>     
 > - **Refresh Token** → long-term session continuity
+>     
 > - refresh flow → issue new access token without re-login
->
+>     
+> 
 > ---
->
+> 
 > **Why Two Tokens Exist**
->
+> 
 > Without refresh token:
->
+> 
 > - user must log in again every time access token expires
->
+>     
+> 
 > With refresh token:
->
+> 
 > - user stays authenticated
+>     
 > - only access token is rotated
->
+>     
+> 
 > ---
->
+> 
 > **Naming Mistake I Had**
->
+> 
 > I used:
->
+> 
 > - `generateFreshToken`
->
+>     
+> 
 > Correct naming:
->
+> 
 > - `refreshAccessToken`
->
+>     
+> 
 > Reason:
->
+> 
 > - nothing is “fresh”
+>     
 > - we are refreshing the **access token**, not creating a new auth system
->
+>     
+> 
 > ---
->
+> 
 > **Mental Model**
->
-> | Token Type    | Purpose            | Lifetime |
-> | ------------- | ------------------ | -------- |
-> | Access Token  | API authorization  | short    |
-> | Refresh Token | session continuity | long     |
->
+> 
+> |Token Type|Purpose|Lifetime|
+> |---|---|---|
+> |Access Token|API authorization|short|
+> |Refresh Token|session continuity|long|
+> 
 > ---
->
+> 
 > **Final Understanding**
->
+> 
 > Login → issue both tokens once  
 > Refresh → use refresh token to issue new access token only
 
@@ -6661,33 +7346,40 @@ const refreshToken = async (req: Request, res: Response) => {
 CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls whether a frontend running on one origin can access resources from a backend on a different origin. Browsers block cross-origin requests by default to prevent unauthorized data access. The server must explicitly allow them using CORS headers.
 
 - **Origin = protocol + domain + port** (e.g., `http://localhost:5173` vs `http://localhost:3000`)
+    
 - **Problem:** browser blocks requests between different origins even if backend is working fine
+    
 - **Fix:** backend must explicitly allow the frontend origin using `Access-Control-Allow-Origin`
+    
 - **Express setup:**
-  ```ts
-  app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-  ```
+    
+    ```ts
+    app.use(cors({ origin: "http://localhost:5173", credentials: true }))
+    ```
+    
 - **Cookies case:** requires `credentials: true` on backend and `withCredentials: true` on frontend requests
+    
 - **Without CORS:** requests fail, cookies are not sent, refresh-token flow breaks
+    
 
 ---
 
 ### Implementation
 
 1. Install package
+    
 
 ```bash
 npm i cors
 ```
 
 2. Configure in `app.ts`
+    
 
 ```ts
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  }),
-);
+app.use(cors({
+  origin: "http://localhost:3000"
+}));
 ```
 
 ---
@@ -6698,7 +7390,7 @@ This section introduces centralized error handling so all backend errors are man
 
 When sending a request with an invalid token, Express returns a default HTML error page:
 
-![image-20265312252329.png](../media/image-20265312252329.png)
+![image-20265312252329.png](image-20265312252329.png)
 
 This is not useful for APIs. We need structured JSON responses instead.
 
@@ -6715,7 +7407,7 @@ const globalErrorHandler = (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   console.error(err.stack);
 
@@ -6809,12 +7501,19 @@ After creating the utility, refactor the entire codebase to use the reusable res
 Refactored files:
 
 1. `src/utilities/sendResponse.ts`
+    
 2. `src/modules/users/users.controllers.ts`
+    
 3. `src/middlewares/globalErrorHandler.ts`
+    
 4. `src/app.ts`
+    
 5. `src/modules/auth/auth.controller.ts`
+    
 6. `src/middlewares/auth.ts`
+    
 7. `src/modules/profiles/profiles.controller.ts`
+    
 
 This removes duplicate response logic and centralizes the response format across the project.
 
@@ -6823,10 +7522,15 @@ This removes duplicate response logic and centralizes the response format across
 ### Benefits
 
 - Consistent API response structure
+    
 - Better maintainability
+    
 - Less repetitive code
+    
 - Easier future modifications
+    
 - Cleaner controllers
+    
 
 ---
 
@@ -6910,9 +7614,13 @@ vercel --prod
 During setup:
 
 - Choose team
+    
 - Link project (or create new)
+    
 - Set project name (must be lowercase)
+    
 - Confirm settings
+    
 
 ---
 
@@ -6921,7 +7629,9 @@ During setup:
 After deployment, Vercel provides:
 
 - Production URL
+    
 - Alias URL
+    
 
 Example:
 
@@ -6934,7 +7644,11 @@ https://your-project.vercel.app
 ## Required Deployment Checklist
 
 - `dist/` exists (build must run before deploy)
+    
 - `start` script points to `dist/server.js`
+    
 - environment variables configured in Vercel dashboard
+    
 - CORS updated to production frontend URL
+    
 - cookies enabled if using auth (`credentials: true`)
