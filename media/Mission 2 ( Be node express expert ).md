@@ -1,7 +1,7 @@
 # Module 5:  **Web Architecture & Node.js Fundamentals**
 
 ### **1. Client-Server Architecture**
-![Mission 2-1778357633931.webp](media/Mission%202-1778357633931.webp)
+![Mission 2-1778357633931.webp](Mission%202-1778357633931.webp)
 
 The web works mainly through communication between two sides: the client and the server.
 
@@ -14,7 +14,7 @@ The **server** is a remote computer that stores resources and handles logic. It 
 - JSON data
     
 - images or videos
-    
+
 - authentication results
     
 - error messages
@@ -127,8 +127,7 @@ Modern web applications are basically structured systems of client–server comm
 ---
 
 ### **2. Domain Name & DNS (Domain Name Server)**
-
-![Mission 2-1778357738536.webp](media/Mission%202-1778357738536.webp)
+![Mission 2-1778357738536.webp](Mission%202-1778357738536.webp)
 
 The internet does not actually understand names like `google.com` or `example.com`. Those are just human-friendly labels.
 
@@ -232,7 +231,7 @@ DNS is what makes the internet usable at scale.
 ### **3. HTTP Requests & Rendering**
 
 
-![Mission 2-1778358051588.webp](media/Mission%202-1778358051588.webp)
+![Mission 2-1778358051588.webp](Mission%202-1778358051588.webp)
 
 - Connection: From IP to Server Communication
     
@@ -467,10 +466,9 @@ This is what enables non-blocking I/O and event-driven architecture.
     
 
 ### **Event Loop & Thread Pool**
+![Mission 2-1778358568803.webp](Mission%202-1778358568803.webp)
 
-![Mission 2-1778358568803.webp](media/Mission%202-1778358568803.webp)
-
-![Mission 2-1778358479582.webp](media/Mission%202-1778358479582.webp)
+![Mission 2-1778358479582.webp](Mission%202-1778358479582.webp)
 
 **Event Loop**
 
@@ -563,7 +561,7 @@ Modern solutions include:
 
 So the system scales by moving CPU-heavy work away from the event loop instead of forcing it to handle everything.
 
-![Mission 2-1778358227666.webp](media/Mission%202-1778358227666.webp)
+![Mission 2-1778358227666.webp](Mission%202-1778358227666.webp)
 
 ---
 
@@ -770,7 +768,7 @@ Together, these define how JavaScript code is organized, shared, and executed in
 
 ---
 
-![Mission 2-1778358227666.webp](media/Mission%202-1778358227666.webp)
+![Mission 2-1778358227666.webp](Mission%202-1778358227666.webp)
 
 In Node.js, the system is designed to handle multiple operations simultaneously without waiting for one to finish before starting the next. This is particularly evident in how it manages concurrent user requests.
 
@@ -1534,7 +1532,7 @@ const server: Server = createServer((req: IncomingMessage, res) => {
 server is running on port: 5000
 ```
 
-![Mission 2-1778442194754.webp](media/Mission%202-1778442194754.webp)
+![Mission 2-1778442194754.webp](Mission%202-1778442194754.webp)
 
 ## Now, what if we want to send the response as a JSON
 
